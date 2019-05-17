@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let credentials = UserDefaults.standard.value(forKey: "userCredentials")
         debugPrint(credentials!)
         
-        // Cambio de storyboard a otro
+        // Cambio de storyboard a otro.
 //        let authStoryboard = UIStoryboard(name: "Auth", bundle: nil)
 //        let initialViewController = authStoryboard.instantiateInitialViewController()
 //        window?.rootViewController = initialViewController
