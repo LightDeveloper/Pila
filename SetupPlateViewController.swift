@@ -53,7 +53,10 @@ class SetupPlateViewController: UIViewController {
     @IBAction func btnAddPressed(_ sender: Any) {
         if let foodText = txtfFood.text,
             !foodText.isEmpty {
+            
             PlateFactory.shared.insert(plate: foodText, at: 0)
+            PlateFactory.shared.saveToUserDefaults()
+            
             let indexPath = IndexPath(row: 0, section: 0)
             tblFood.insertRows(at: [indexPath], with: .automatic)
         }
@@ -136,7 +139,9 @@ extension SetupPlateViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    moveRowAt sourceIndexPath: IndexPath,
                    to destinationIndexPath: IndexPath) {
-        let foodToMove = PlateFactory.shared.removePlateAt(index: sourceIndexPath.row)        
+        let foodToMove = PlateFactory.shared.removePlateAt(index: sourceIndexPath.row)
+        PlateFactory.shared.saveToUserDefaults()
+        
         PlateFactory.shared.insert(plate: foodToMove, at: destinationIndexPath.row)
     }
     
@@ -147,6 +152,7 @@ extension SetupPlateViewController: UITableViewDataSource {
         case .delete:
             debugPrint("Quiero borrar la \(indexPath.row)")
             PlateFactory.shared.removePlateAt(index: indexPath.row)
+            PlateFactory.shared.saveToUserDefaults()
             tblFood.deleteRows(at: [indexPath], with: .automatic)
         default:
             break;

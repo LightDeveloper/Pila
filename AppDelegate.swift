@@ -18,11 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appDefaultsPrepared = UserDefaults.standard.bool(forKey: "appDefaultsPrepared")
         
         if !appDefaultsPrepared {
-            defaults.set(["password": "1234", "user": "admin"], forKey: "userCredentials")
             defaults.set(true, forKey: "appDefaultsPrepared")
             defaults.set(false, forKey: "allowNegatives")
             defaults.set("1.0", forKey: "maxValue")
             defaults.set(Float(2.0), forKey: "speedTime")
+            defaults.set(["hola", "adios"], forKey: "saludos")
+            defaults.set(["password": "1234", "user": "admin"], forKey: "userCredentials")
         }
     }
 
